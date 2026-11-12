@@ -1,0 +1,357 @@
+/* ---------- Variables ---------- */
+:root {
+  --page-bg: #f0eeee;
+  --card-bg: #ffffff;
+  --ink: #2e2a2c;
+  --ink-soft: #6b6568;
+  --line: #dedada;
+  --accent: #b0456b;
+  --accent-dark: #8f3556;
+  --highlight: #f2d9e1;
+  --error: #c0392b;
+  --radius: 14px;
+}
+
+/* ---------- Página ---------- */
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--page-bg);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(222, 200, 209, 0.60), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(215, 218, 222, 0.70), transparent 35%);
+  background-attachment: fixed;
+}
+
+/* Formulario centrado en pantalla */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ---------- Tarjeta ---------- */
+.card {
+  width: 100%;
+  max-width: 640px;
+  background-color: var(--card-bg);
+  border-radius: 22px;
+  border: 3px solid var(--highlight);
+  box-shadow: 0 20px 50px rgba(60, 40, 50, 0.12);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.card__header {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  width: clamp(88px, 22vw, 130px);
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+.card__header h1 {
+  font-size: clamp(1.75rem, 5vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.card__header p {
+  margin-top: 0.5rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Fieldset y legend ---------- */
+fieldset {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background-color: #faf8f9;
+}
+
+legend {
+  padding: 0.25rem 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+  background-color: var(--highlight);
+  border-radius: 999px;
+}
+
+/* ---------- Campos ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.row .field {
+  margin-bottom: 0;
+}
+
+.row + .field,
+.field + .row {
+  margin-top: 1.1rem;
+}
+
+label,
+.field__title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  color: var(--ink);
+  background-color: var(--card-bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+::placeholder {
+  color: #9a9496;
+}
+
+/* Efecto para destacar el campo seleccionado */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(176, 69, 107, 0.20);
+}
+
+/* Campo con valor no válido (tras interactuar con él) */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: var(--error);
+}
+
+input:user-invalid:focus,
+select:user-invalid:focus {
+  box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.20);
+}
+
+/* ---------- Radios y checkboxes como chips ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.chips input,
+.check input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.chips label {
+  padding: 0.5rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--card-bg);
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.chips label:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.chips input:checked + label {
+  color: #fff;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.chips input:focus-visible + label,
+.check input:focus-visible + label {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Aceptación de normas ---------- */
+.check {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.check label {
+  position: relative;
+  padding-left: 2.1rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.check label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: var(--card-bg);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.check input:checked + label::before {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.check input:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.3rem;
+  width: 0.4rem;
+  height: 0.8rem;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+a:hover {
+  color: var(--accent-dark);
+}
+
+/* ---------- Botones ---------- */
+.actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.75rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.btn--primary {
+  color: #fff;
+  background-color: var(--accent);
+  border-color: var(--accent-dark);
+  box-shadow: 0 4px 0 var(--accent-dark);
+}
+
+.btn--primary:hover {
+  color: #fff;
+  background-color: #c05a7f;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 var(--accent-dark);
+}
+
+.btn--primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--accent-dark);
+}
+
+.btn--ghost {
+  color: var(--accent);
+  background-color: transparent;
+  border-color: var(--accent);
+}
+
+.btn--ghost:hover {
+  color: #fff;
+  background-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Página de normas ---------- */
+.card--text section {
+  margin-bottom: 1.4rem;
+}
+
+.card--text h2 {
+  margin-bottom: 0.3rem;
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+
+.back {
+  margin-top: 2rem;
+}
+
+/* ---------- Adaptable a pantallas más anchas ---------- */
+@media (min-width: 560px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .actions .btn {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

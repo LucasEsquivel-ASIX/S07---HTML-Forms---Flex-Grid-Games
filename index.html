@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscripción al Torneo Relámpago</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <main class="page">
+    <form class="card" id="form-inscripcion" action="#" method="post">
+
+      <header class="card__header">
+        <img class="logo" src="/images/logo.png" alt="Logo del Torneo Relámpago" width="150" height="120">
+        <h1>Lufia Torneo</h1>
+        <p>Rellena tus datos, elige tu juego y reserva tu plaza.</p>
+      </header>
+
+      <fieldset>
+        <legend>Datos personales</legend>
+
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" autocomplete="email" required>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="edad">Edad (mínimo 16)</label>
+            <input type="number" id="edad" name="edad" min="16" max="120" step="1" required>
+          </div>
+
+          <div class="field">
+            <label for="nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="nacimiento" name="nacimiento" max="2010-11-12">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Cuenta de jugador</legend>
+
+        <div class="field">
+          <label for="nickname">Nombre del jugador (nickname)</label>
+          <input type="text" id="nickname" name="nickname" minlength="3" maxlength="15" autocomplete="username"
+            required>
+        </div>
+
+        <div class="field">
+          <label for="password">Contraseña Segura </label>
+          <span class="field__info">Debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula y un
+            número.</span>
+          <input type="password" id="password" name="password" minlength="8" autocomplete="new-password" required>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tu participación</legend>
+
+        <div class="field">
+          <label for="juego">Videojuego del torneo</label>
+          <select id="juego" name="juego" required>
+            <option value="" selected disabled>Elige un videojuego</option>
+            <option value="zomboid">Project Zomboid</option>
+            <option value="elden-ring">Elden Ring</option>
+            <option value="bg3">Baldur's Gate 3</option>
+            <option value="witcher3">The Witcher 3: Wild Hunt</option>
+            <option value="skyrim">The Elder Scrolls V: Skyrim</option>
+            <option value="fallout4">Fallout 4</option>
+            <option value="dark-souls-3">Dark Souls III</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <span class="field__title" id="plataforma-titulo">Plataforma</span>
+          <div class="chips" role="radiogroup" aria-labelledby="plataforma-titulo">
+            <input type="radio" id="plataforma-pc" name="plataforma" value="pc" required>
+            <label for="plataforma-pc">PC</label>
+
+            <input type="radio" id="plataforma-ps" name="plataforma" value="playstation">
+            <label for="plataforma-ps">PlayStation</label>
+
+            <input type="radio" id="plataforma-xbox" name="plataforma" value="xbox">
+            <label for="plataforma-xbox">Xbox</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field__title" id="horario-titulo">Disponibilidad horaria (puedes marcar varias)</span>
+          <div class="chips" role="group" aria-labelledby="horario-titulo">
+            <input type="checkbox" id="horario-manana" name="horario" value="manana">
+            <label for="horario-manana">Mañana</label>
+
+            <input type="checkbox" id="horario-tarde" name="horario" value="tarde">
+            <label for="horario-tarde">Tarde</label>
+
+            <input type="checkbox" id="horario-noche" name="horario" value="noche">
+            <label for="horario-noche">Noche</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="comentarios">Comentarios adicionales</label>
+          <textarea id="comentarios" name="comentarios" rows="4" maxlength="500"
+            placeholder="Equipo, necesidades de accesibilidad, dudas…"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Confirmación</legend>
+
+        <div class="check">
+          <input type="checkbox" id="normas" name="normas" value="aceptadas" required>
+          <label for="normas">He leído y acepto las <a href="/normas/normas.html" target="_blank" rel="noopener">normas
+              del torneo</a></label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="reset" class="btn btn--ghost">Limpiar formulario</button>
+        <button type="submit" class="btn btn--primary">Inscribirme</button>
+      </div>
+
+    </form>
+  </main>
+</body>
+
+</html>
